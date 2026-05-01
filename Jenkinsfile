@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/Saksh-says/assignment7.git', credentialsId: 'Saksh1997'
+                git branch: 'master', url: 'https://github.com/Saksh-says/assignment7.git', credentialsId: 'bhoomicred'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 // Build the image with your Docker Hub repo name directly
-                sh 'docker build -t saksh1997/hello11:javav1 .'
+                sh 'docker build -t bhoomiiiiiii/helloapp:v1 .'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 // Run the image you just pushed
-                sh 'docker run --rm saksh1997/hello11:javav1'
+                sh 'docker run --rm bhoomiiiiiii/helloapp:v1'
             }
         }
     }
