@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/<your-username>/<repo-name>.git'
+                git branch: 'master', url: 'https://github.com/Saksh-says/assignment7.git'
             }
         }
 
