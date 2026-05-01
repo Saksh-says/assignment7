@@ -30,6 +30,21 @@ pipeline {
                 sh 'docker run --rm bhoomiiiiiii/helloapp:v1'
             }
         }
+	stage('Deploy to Kubernetes') {
+            steps {
+                // Apply deployment and service YAMLs
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+            }
+        }	
+	stage('Verify Pod') {
+            steps {
+                // Check pod status
+                sh 'kubectl get pods -l app=hello'
+            }
+        }
+
     }
+
 }
 
