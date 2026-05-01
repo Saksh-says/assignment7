@@ -4,19 +4,23 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/Saksh-says/assignment7.git'
+                git branch: 'master', url: 'https://github.com/Saksh-says/assignment7.git', credentialsId: 'Saksh1997'
             }
         }
 
-        stage('Compile') {
+        stage('Build Docker Image') {
             steps {
-                sh 'javac HelloWorld.java'
+                script {
+                    sh 'docker build -t hello-world-java .'
+                }
             }
         }
 
-        stage('Execute') {
+        stage('Run Docker Container') {
             steps {
-                sh 'java HelloWorld'
+                script {
+                    sh 'docker run --rm hello-world-java'
+                }
             }
         }
     }
